@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p 3000"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.8",
     "@fullpage/react-fullpage": "^0.1.18",
     "babel-plugin-styled-components": "^1.12.0",
     "next": "10.0.3",
@@ -16,5 +17,8 @@
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.2",
     "swiper": "^6.3.5"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
   }
 }
