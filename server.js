@@ -8,6 +8,8 @@ const handle = app.getRequestHandler();
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 
+app.listen(port);
+
 app
   .prepare()
   .then(() => {
@@ -23,7 +25,7 @@ app
       return handle(req, res);
     });
 
-    server.listen(3000, (err) => {
+    server.listen(port, (err) => {
       if (err) throw err;
       console.log("> Ready on http://localhost:3000");
     });
