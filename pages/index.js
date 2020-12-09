@@ -21,6 +21,11 @@ const Div = styled.div`
   background-color: ${(props) => props.color ? props.theme.bgColor : props.theme.whiteColor};
   margin: 0 auto;
   padding: 0 30px;
+  /* ${props => {
+    if(props.test=="test") {
+      return `padding-top: 20px`;
+    }
+  }} */
 `
 
 const MobileDiv = styled.div`
@@ -35,19 +40,28 @@ const MobileDiv = styled.div`
   }
 `
 
-const FullPageMain = ({paddingValue}) => {
-  console.log(`fullpage comp paddingValue ${paddingValue}`)
+const FullPageMain = () => {
   const [firstHeight, setFirstHeight] = useState();
   const test = useRef();
+  const [paddingValue, setPaddingValue] = useState();
+  // useEffect(()=>{
+  //     setPaddingValue(window.innerWidth < 1024 ? "113px" : "70px")
+  // });
+useEffect(()=>{
   if(test.current){
-    console.log(test.current.fullpageApi)
+    console.log(test.current) // fpUtils.getWindowHeight)
     
+    //test.current.paddingTop = "90px";
+    setPaddingValue("90px")
+    test.current.fullpageApi.rebuild;
   }
+})
+ 
   return (
     <ReactFullpage
       ref={test}
       //fullpage options
-      licenseKey = {'9925D61B-12FD4194-8F8304F5-4C55C4CA'}
+      licenseKey = {process.env.NEXT_PUBLIC_FULLPAGE_KEY}
       pluginWrapper={pluginWrapper}
       scrollingSpeed = {1000} 
       scrollOverflow = {true}
@@ -56,6 +70,11 @@ const FullPageMain = ({paddingValue}) => {
       touchSensitivity = "10"
       responsiveWidth = "768"
       scrollBar = {false}
+      // afterRender = {(fullpageApi) => {
+      //   fullpageApi.reBuild();
+      // }}
+
+      
 
       render={({ state, fullpageApi }) => {
         console.log(`fullpage render paddingValue ${paddingValue}`)
@@ -87,12 +106,8 @@ const FullPageMain = ({paddingValue}) => {
 }
 
 export default function Home() {
-  const [paddingValue, setPaddingValue] = useState();
-  useEffect(()=>{
-      setPaddingValue(window.innerWidth < 1024 ? "113px" : "70px")
-  });  
-  console.log(`home paddingValue ${paddingValue}`)
+  
   return (
-    <FullPageMain paddingValue={paddingValue}/>
+    <FullPageMain/>
   )
 }
