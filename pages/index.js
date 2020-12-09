@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import dynamic from "next/dynamic";
 import ReactFullpage from "@fullpage/react-fullpage";
 import Main001 from "../src/components/main/Main001";
 import MobileMain001 from "../src/components/main/Main001Mobile";
@@ -21,11 +20,6 @@ const Div = styled.div`
   background-color: ${(props) => props.color ? props.theme.bgColor : props.theme.whiteColor};
   margin: 0 auto;
   padding: 0 30px;
-  /* ${props => {
-    if(props.test=="test") {
-      return `padding-top: 20px`;
-    }
-  }} */
 `
 
 const MobileDiv = styled.div`
@@ -41,46 +35,29 @@ const MobileDiv = styled.div`
 `
 
 const FullPageMain = () => {
-  const [firstHeight, setFirstHeight] = useState();
-  const test = useRef();
-  const [paddingValue, setPaddingValue] = useState();
-  // useEffect(()=>{
-  //     setPaddingValue(window.innerWidth < 1024 ? "113px" : "70px")
-  // });
-useEffect(()=>{
-  if(test.current){
-    console.log(test.current) // fpUtils.getWindowHeight)
-    
-    //test.current.paddingTop = "90px";
-    setPaddingValue("90px")
-    test.current.fullpageApi.rebuild;
-  }
-})
- 
   return (
     <ReactFullpage
-      ref={test}
       //fullpage options
       licenseKey = {process.env.NEXT_PUBLIC_FULLPAGE_KEY}
       pluginWrapper={pluginWrapper}
       scrollingSpeed = {1000} 
       scrollOverflow = {true}
       scrollOverflowOptions = {{scrollbars: false}}
-      paddingTop = {paddingValue}
+      //paddingTop = {paddingTop}
       touchSensitivity = "10"
       responsiveWidth = "768"
       scrollBar = {false}
-      // afterRender = {(fullpageApi) => {
-      //   fullpageApi.reBuild();
-      // }}
-
-      
+      afterRender = {(fullpageApi) => {
+        const paddingTop = Number(fullpageApi.item.clientWidth) > 1024 ? "70px" : "113px"
+        const height = Number(fullpageApi.item.clientHeight) - 70;
+        fullpageApi.item.parentNode.querySelectorAll('.fp-section').forEach(function(section){
+          section.style.paddingTop = paddingTop;
+          section.style.height = `${height}px`;
+          section.firstChild.style.height = `${height}px`;
+        })
+      }}
 
       render={({ state, fullpageApi }) => {
-        console.log(`fullpage render paddingValue ${paddingValue}`)
-
-        //console.log(fullpageApi.getActiveSection());
-
         return (
           <ReactFullpage.Wrapper>
             <div className="section">
@@ -106,8 +83,7 @@ useEffect(()=>{
 }
 
 export default function Home() {
-  
   return (
-    <FullPageMain/>
+    <FullPageMain />
   )
 }
