@@ -37,8 +37,8 @@ const HeaderBox = styled.div`
 
 const LogoArea = styled.div`
     width:20%;
-    background: url('/images/header/logo.png') no-repeat 0 6px;
-    background-size: 85%;
+    background: url('/images/header/logo.png') no-repeat 0 5px;
+    background-size: 100%;
     max-width: 250px;
     height: 100%;
     float: left;

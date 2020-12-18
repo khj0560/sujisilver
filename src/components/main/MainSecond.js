@@ -9,6 +9,7 @@ import "swiper/swiper-bundle.css";
 ///////// Main css /////////
 const SlideWrapper = styled.div`
   margin: 30px 0;
+  padding: 0 30px;
 `
 const Test = styled.div`
     width: 100%;
@@ -92,7 +93,7 @@ const Slide = () => {
         </>
     )
 }
-const Main002 = () => {
+const MainSecond = () => {
     return(
         <>
         <Title 
@@ -107,4 +108,4 @@ const Main002 = () => {
     )
 }
 
-export default Main002;
+export default MainSecond;

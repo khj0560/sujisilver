@@ -58,7 +58,7 @@ const Main003Text = styled(Text)`
     }
 `
 
-const Main003 = () => {
+const MainThird = () => {
     return(
         <>
             <Title 
@@ -88,4 +88,4 @@ const Main003 = () => {
     ) 
 }
 
-export default Main003;
+export default MainThird;

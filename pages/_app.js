@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from 'next/router'
 import styled, { ThemeProvider, css } from 'styled-components';
 import GlobalStyles from "../src/styles/GlobalStyles";
 import Theme from "../src/styles/Theme";
 import Head from 'next/head'
 import Header from "../src/components/header/Header";
+import Footer from "../src/components/Footer";
+import ErrorBoundary from "../src/components/ErrorBoundary";
 import "../src/styles/style.css";
 
 const Box = css`
@@ -34,40 +36,46 @@ const ContentDiv = styled.div`
 `
 const Wrapper = styled.div`
   ${props => {
-    if(!props.fullpageOn){
+    if(props.fullpageOff){
         return `${Box}`;
     }
   }}
  ` 
 
 function MyApp({ Component, pageProps, router }) {
-  const [width, setWidth] = React.useState(0);
-  const [paddingValue, setPaddingValue] = React.useState();
-  const [fullpageOn, setFullpageOn] = React.useState(false);
-  React.useEffect(()=>{
-      setWidth(window.innerWidth);
-      if(router.pathname == "/") {
-          setPaddingValue("none")
-          setFullpageOn(width < 768 ? false : true)
-      }else {
-        setPaddingValue(width < 1024 ? "113px" : "70px");
-      }
+  const [width, setWidth] = useState(0);
+  const [paddingValue, setPaddingValue] = useState();
+  const [fullpageOff, setFullpageOff] = useState();
+  useEffect(()=>{
+    setWidth(window.innerWidth);
+    if(router.pathname == "/") {
+        setPaddingValue("none")
+        //setFullpageOff(width < 768 ? true : false);
+        setFullpageOff(false);
+    }else {
+      setPaddingValue(width < 1024 ? "113px" : "70px");
+      setFullpageOff(true);
+    }
   });   
   return (
     <>
+    <ErrorBoundary>
       <Head>
         <title>수지실버노인복지센터</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
         <Header/>
-        <ContentDiv id="content" paddingVal={paddingValue} fullpageOn={fullpageOn}>
-            <Wrapper fullpageOn={fullpageOn}>
+        <ContentDiv id="content" paddingVal={paddingValue}>
+            <Wrapper fullpageOff={fullpageOff}>
               <Component {...pageProps}></Component>
             </Wrapper>  
         </ContentDiv>
+        <Footer/>
       </ThemeProvider>
+    </ErrorBoundary>
     </>
   )
 }

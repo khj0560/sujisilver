@@ -82,6 +82,10 @@ export const TableDiv = css`
             }
         }
     }
+    @media(max-width: 768px) {
+        width: 728px;
+        overflow: hidden;
+    }
 `
 export const SmallP = css`
     color: ${props => props.theme.mediumGrayColor};

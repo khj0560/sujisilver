@@ -75,6 +75,9 @@ const ArrowBottom = styled.div`
         background: url('/images/main/arrow_bottom.png') no-repeat 50% 0;
         color: transparent;
     }    
+    @media (max-width: 1024px) {
+        display: none;
+    }   
 `
 const MainBtn = styled.div`
     position: relative;
@@ -140,7 +143,7 @@ const MainBtnComp = ({link,title,image}) => (
     </MainBtn>
 )
 
-const Main001 = () => {
+const MainFirst = () => {
 
     return (                
         <Main001Box>
@@ -170,4 +173,4 @@ const Main001 = () => {
     )
 }
 
-export default Main001;
+export default MainFirst;

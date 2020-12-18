@@ -79,9 +79,9 @@ const BtnItems = styled.li`
     }
 `
 
-const Main001Mobile = () => (
+const MobileMainFirst = () => (
     <MainBox>
-        <MainImg image="/images/main/main_img.jpg">
+        <MainImg image="/images/main/main_img.jpg" >
             <div>
                 <h5>어르신에게 재활의 의지를</h5>
                 <h5>가족은 삶의 여유를</h5>
@@ -100,4 +100,4 @@ const Main001Mobile = () => (
     </MainBox>
 )
 
-export default Main001Mobile;
+export default MobileMainFirst;

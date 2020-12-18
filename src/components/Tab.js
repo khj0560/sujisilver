@@ -21,6 +21,7 @@ const activeLine = css`
 // ====================== css end ======================= //
 const BtnWrapper = styled.div `
     width: 50%;
+    max-width: 500px;
     ${props => {
         if(props.contentSize < 3) {
             return `width: 30%`

@@ -19,7 +19,7 @@ const Main005Text = styled(Text)`
     margin: 20px 0;
 `
 
-const Main005 = () => {
+const MainFifth = () => {
     return(
         <>
             <Title
@@ -44,4 +44,4 @@ const Main005 = () => {
     )
 }
 
-export default Main005;
+export default MainFifth;
