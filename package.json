@@ -2,6 +2,9 @@
   "name": "sujisilver",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "yarn": "1.22.4"
+  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
