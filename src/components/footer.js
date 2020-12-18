@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const FooterStyle = styled.div`
-    width: 100%;
+    width: 100%; 
     font-size: 0.8em;
     & > div:nth-child(1) {
         z-index:1;
