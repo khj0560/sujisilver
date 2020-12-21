@@ -9,7 +9,7 @@ const MBHeader = styled.div`
     background-color: ${props => props.theme.whiteColor};
     border-bottom: 1px solid ${props => props.theme.bgColor};
     box-shadow: 0 0 0 #333, 0 1px 5px rgba(0,0,0,0.05);
-    z-index: 10;
+    z-index: 30;
 `
 const TopArea = styled.div`
     width: 100%;
