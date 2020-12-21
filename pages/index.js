@@ -11,7 +11,6 @@ export default function Home() {
       setMobile(true);
     }
   })
-  console.log(mobile)
   if(mobile) {
     return <MobileMain />
   }else {
