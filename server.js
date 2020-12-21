@@ -1,3 +1,5 @@
+import sslRedirect from 'heroku-ssl-redirect';
+
 const express = require("express");
 const next = require("next");
 
@@ -13,26 +15,25 @@ app
   .then(() => {
     const server = express();
 
+    // redirect to SSL
+    server.use(sslRedirect());
+    server.all("*", (req, res) => {
+      return handle(req,res);
+    });
+
     server.get("/WdDetail/:id", (req, res) => {
       const actualPage = "/WdDetail";
       const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get("*", (req, res, next) => {
-      /* Redirect http to https */
-      if ("https" !== req.headers["x-forwarded-proto"] && "production" === process.env.NODE_ENV) {
-        res.redirect("https://" + req.hostname + req.url);
-      } else {
-          // Continue to other routes if we're not redirecting
-          next();
-      }
+    server.get("*", (req, res) => {
       return handle(req, res);
     });
 
     server.listen(port, (err) => {
       if (err) throw err;
-      console.log("> Ready on http://localhost:3000");
+      console.log(`> Ready on http://localhost:${port}`);
     });
   })
   .catch((ex) => {
