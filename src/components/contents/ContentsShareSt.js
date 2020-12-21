@@ -81,11 +81,15 @@ export const TableDiv = css`
                 vertical-align: middle;
             }
         }
+        @media(max-width: 768px) {
+            width: 728px;
+        }
     }
     @media(max-width: 768px) {
-        width: 728px;
-        overflow: hidden;
+        justify-content: left;
+        overflow-x: scroll;
     }
+
 `
 export const SmallP = css`
     color: ${props => props.theme.mediumGrayColor};

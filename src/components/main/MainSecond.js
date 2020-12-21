@@ -72,7 +72,7 @@ const Slide = () => {
                     </SwiperSlide>
                     <SwiperSlide key="slide-3" tag="li">
                         <Test>
-                            <SlideImg src="/images/main/main002_01.jpg" alt="Slide01" />
+                            <SlideImg src="/images/main/main002_03.jpg" alt="Slide01" />
                             <SlideText>
                                 <h5>물리치료 및 재활 도움</h5>
                                 <p>다양한 물리치료 기기와 재활 기구를 갖춘 물리치료실을 보유하고 있습니다</p>

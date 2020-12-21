@@ -24,7 +24,7 @@ const MainTitleArea = styled.div`
     color: ${props => props.theme.whiteColor};
     text-shadow: 0 0 0 #333, 0 5px 10px rgba(0,0,0,0.3);
     height: 35%;
-
+    z-index: 30;
     & > h3 {
         font-family: 'TR';
     }
@@ -101,7 +101,6 @@ const MainBtn = styled.div`
         font-size: ${props => props.theme.titleSize03};
         text-align: center;
         border-radius: 10px 10px 0 0;
-
         @media(max-width: 900px) {
             font-size: ${props => props.theme.titleSize04};
         }
@@ -128,7 +127,12 @@ const BtnImg = styled.div`
     background-size: cover;
     background-position: center center;
 `
-
+const BgColor = styled.div`
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+`
 const MainBtnComp = ({link,title,image}) => (
     <MainBtn>
         <Link href={link}>
@@ -147,6 +151,7 @@ const MainFirst = () => {
 
     return (                
         <Main001Box>
+            <BgColor />
             <MainTitleArea>
                 <h3>어르신에게 재활의 의지를, 가족은 삶의 여유를</h3>
                 <h1>수지 실버 주야간보호센터 . 요양원</h1>
@@ -168,7 +173,7 @@ const MainFirst = () => {
                     link="/visitcare"
                 />
             </MainBtnArea>   
-            <ArrowBottom><a href=""></a></ArrowBottom>
+            {/* <ArrowBottom><a href="#main-second"></a></ArrowBottom> */}
         </Main001Box>
     )
 }

@@ -16,8 +16,10 @@ const MainImg = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    text-shadow: 0 0 0 #333, 0 5px 20px rgba(0,0,0,0.3);
-
+    & div{
+        z-index: 10;
+        text-shadow: 0 0 0 #333, 0 5px 20px rgba(0,0,0,0.3);
+    }
     & h2{
         font-family: 'TB'
     }
@@ -78,10 +80,16 @@ const BtnItems = styled.li`
         font-family: 'TB';
     }
 `
-
+const BgColor = styled.div`
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: -webkit-fill-available;
+    height: inherit;
+`
 const MobileMainFirst = () => (
     <MainBox>
         <MainImg image="/images/main/main_img.jpg" >
+            <BgColor />
             <div>
                 <h5>어르신에게 재활의 의지를</h5>
                 <h5>가족은 삶의 여유를</h5>

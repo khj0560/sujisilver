@@ -43,7 +43,7 @@
 /* SubPage */
 #subPageSlide .swiper-container {
   width: 100%;
-  max-width: 1024px;
+  max-width: 768px;
   height: auto;
 }
 #subPageSlide .swiper-slide {

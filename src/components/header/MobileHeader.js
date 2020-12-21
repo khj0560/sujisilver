@@ -23,7 +23,7 @@ const MBLogoArea = styled.div`
     top: 9px;
     background: url('/images/header/mobileLogo.png') no-repeat 0 3px;
     background-position: center;
-    background-size: 80%;
+    background-size: 90%;
     max-width: 250px;
     height: 100%;
     margin: 0 auto;
