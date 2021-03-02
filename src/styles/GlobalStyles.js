@@ -74,7 +74,7 @@ export default createGlobalStyle`
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family:'NotoB';
+            font-family:'TB';
             font-weight:normal;
             word-break: keep-all;
         }
@@ -89,6 +89,7 @@ export default createGlobalStyle`
         }
         h3 {
             font-size: 1.6rem;
+            line-height: 42px;
         }
         h4 {
             font-size: 1.2rem;

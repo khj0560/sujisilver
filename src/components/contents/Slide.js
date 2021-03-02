@@ -9,11 +9,12 @@ const SlideWrapper = styled.div`
   margin: 20px 0;
 `
 SwiperCore.use([Navigation, Thumbs]);
-const Slide = ({images}) => {
+const Slide = ({images, swiperId}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [isSwiperId, setIsSwiperId] = useState(swiperId ? swiperId : "subPageSlide");
   return (
     <React.Fragment>
-      <SlideWrapper id="subPageSlide">
+      <SlideWrapper id={isSwiperId}>
         <Swiper
           id="main"
           thumbs={{ swiper: thumbsSwiper }}
